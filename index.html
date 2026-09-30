@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nusantara Tour & Travel - Jelajahi Keindahan Indonesia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#0d9488',
+                            darkTeal: '#0f766e',
+                            lightTeal: '#ccfbf1',
+                            orange: '#f97316',
+                            hoverOrange: '#ea580c',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts (Poppins) & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-teal selection:text-white">
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-orange flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-bold fa-compass text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white transition-colors duration-300" id="logo-text">
+                        Nusantara<span class="text-brand-orange">Tour</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#beranda" class="nav-link text-white hover:text-brand-orange font-medium transition-colors">Beranda</a>
+                    <a href="#paket" class="nav-link text-white hover:text-brand-orange font-medium transition-colors">Paket Wisata</a>
+                    <a href="#keunggulan" class="nav-link text-white hover:text-brand-orange font-medium transition-colors">Keunggulan</a>
+                    <a href="#testimoni" class="nav-link text-white hover:text-brand-orange font-medium transition-colors">Testimoni</a>
+                    <a href="#kontak" class="nav-link text-white hover:text-brand-orange font-medium transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="#paket" class="bg-brand-orange hover:bg-brand-hoverOrange text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-orange-500/30 transition-all transform hover:-translate-y-0.5">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2 rounded-lg" aria-label="Toggle Navigation">
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-md border-b border-slate-800 transition-all">
+            <div class="px-4 pt-4 pb-6 space-y-3">
+                <a href="#beranda" class="mobile-link block px-3 py-2 text-base font-medium text-white hover:text-brand-orange hover:bg-slate-800 rounded-lg">Beranda</a>
+                <a href="#paket" class="mobile-link block px-3 py-2 text-base font-medium text-slate-300 hover:text-brand-orange hover:bg-slate-800 rounded-lg">Paket Wisata</a>
+                <a href="#keunggulan" class="mobile-link block px-3 py-2 text-base font-medium text-slate-300 hover:text-brand-orange hover:bg-slate-800 rounded-lg">Keunggulan</a>
+                <a href="#testimoni" class="mobile-link block px-3 py-2 text-base font-medium text-slate-300 hover:text-brand-orange hover:bg-slate-800 rounded-lg">Testimoni</a>
+                <a href="#kontak" class="mobile-link block px-3 py-2 text-base font-medium text-slate-300 hover:text-brand-orange hover:bg-slate-800 rounded-lg">Kontak</a>
+                <div class="pt-2">
+                    <a href="#paket" class="mobile-link block text-center w-full bg-brand-orange text-white font-semibold py-3 rounded-xl shadow-md">
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="beranda" class="hero-bg min-h-screen relative flex items-center justify-center pt-24 pb-28 px-4">
+        <div class="max-w-4xl mx-auto text-center text-white z-10">
+            <span class="inline-block bg-brand-teal/30 border border-brand-teal/50 backdrop-blur-md text-brand-lightTeal px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 animate-pulse">
+                ✨ Pengalaman Liburan Tak Terlupakan
+            </span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+                Jelajahi Keindahan <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-emerald-200 to-amber-300">Nusantara</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Temukan surga tersembunyi di Indonesia dengan layanan tur premium, pemandu profesional, dan penawaran terbaik khusus untuk Anda.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#paket" class="w-full sm:w-auto bg-brand-orange hover:bg-brand-hoverOrange text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-orange-500/40 transition-all flex items-center justify-center gap-3 group">
+                    <span>Eksplor Sekarang</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#keunggulan" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-semibold px-8 py-4 rounded-xl transition-all text-center">
+                    Mengapa Kami?
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Search / Filter Bar -->
+        <div class="absolute -bottom-16 left-4 right-4 max-w-5xl mx-auto z-20">
+            <div class="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 border border-slate-100">
+                <form id="search-form" onsubmit="handleSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+                    <!-- Destinasi -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-teal"></i> Destinasi
+                        </label>
+                        <select id="destination-select" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:bg-white font-medium">
+                            <option value="all">Semua Destinasi</option>
+                            <option value="bali">Bali</option>
+                            <option value="raja-ampat">Raja Ampat</option>
+                            <option value="labuan-bajo">Labuan Bajo</option>
+                            <option value="bromo">Gunung Bromo</option>
+                        </select>
+                    </div>
+
+                    <!-- Tanggal -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar text-brand-teal"></i> Keberangkatan
+                        </label>
+                        <input type="date" class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:bg-white font-medium">
+                    </div>
+
+                    <!-- Jumlah Orang -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                            <i class="fa-solid fa-user-group text-brand-teal"></i> Wisatawan
+                        </label>
+                        <select class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:bg-white font-medium">
+                            <option>1 - 2 Orang</option>
+                            <option>3 - 5 Orang</option>
+                            <option>6 - 10 Orang</option>
+                            <option>> 10 Orang (Grup)</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" class="w-full bg-brand-teal hover:bg-brand-darkTeal text-white font-semibold py-3 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 h-[48px]">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Cari Paket</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="paket" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-teal mb-2">Pilihan Terbaik</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Paket Wisata Populer</p>
+            <p class="mt-4 text-slate-600 text-base">Nikmati pengalaman liburan terbaik dengan penawaran harga hemat dan fasilitas bintang lima di destinasi favorit Indonesia.</p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div id="tour-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1: Bali -->
+            <div class="tour-card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg card-hover flex flex-col" data-category="bali">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Exotic Bali" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-brand-darkTeal font-bold px-3 py-1 rounded-full text-xs shadow-sm">
+                        <i class="fa-solid fa-clock text-brand-orange mr-1"></i> 4 Hari 3 Malam
+                    </span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-brand-teal uppercase tracking-wider">Pesona Budaya</span>
+                            <div class="flex items-center text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="text-slate-700 font-bold ml-1 text-xs">4.9 (128)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Exotic Bali Tour</h3>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Eksplorasi keindahan Pura Tanah Lot, pantai Ubud, dan tarian Kecak Uluwatu.</p>
+                    </div>
+                    <div>
+                        <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai dari</span>
+                                <span class="text-lg font-bold text-brand-orange">Rp 3.500.000</span>
+                            </div>
+                            <button onclick="openModal('Exotic Bali Tour', 'Rp 3.500.000', '4 Hari 3 Malam')" class="bg-teal-50 hover:bg-brand-teal hover:text-white text-brand-teal px-4 py-2 rounded-xl font-semibold text-sm transition-colors">
+                                Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Raja Ampat -->
+            <div class="tour-card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg card-hover flex flex-col" data-category="raja-ampat">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=800&q=80" alt="Surga Raja Ampat" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-brand-darkTeal font-bold px-3 py-1 rounded-full text-xs shadow-sm">
+                        <i class="fa-solid fa-clock text-brand-orange mr-1"></i> 5 Hari 4 Malam
+                    </span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-brand-teal uppercase tracking-wider">Bahari & Diving</span>
+                            <div class="flex items-center text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="text-slate-700 font-bold ml-1 text-xs">5.0 (95)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Surga Raja Ampat</h3>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Menikmati gugusan pulau karang Wayag, Piaynemo, dan keanekaragaman bawah laut.</p>
+                    </div>
+                    <div>
+                        <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai dari</span>
+                                <span class="text-lg font-bold text-brand-orange">Rp 8.900.000</span>
+                            </div>
+                            <button onclick="openModal('Surga Raja Ampat', 'Rp 8.900.000', '5 Hari 4 Malam')" class="bg-teal-50 hover:bg-brand-teal hover:text-white text-brand-teal px-4 py-2 rounded-xl font-semibold text-sm transition-colors">
+                                Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Labuan Bajo -->
+            <div class="tour-card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg card-hover flex flex-col" data-category="labuan-bajo">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Sailing Labuan Bajo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-brand-darkTeal font-bold px-3 py-1 rounded-full text-xs shadow-sm">
+                        <i class="fa-solid fa-clock text-brand-orange mr-1"></i> 3 Hari 2 Malam
+                    </span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-brand-teal uppercase tracking-wider">Sailing Phinisi</span>
+                            <div class="flex items-center text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="text-slate-700 font-bold ml-1 text-xs">4.8 (210)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Sailing Labuan Bajo</h3>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Pengalaman menginap di kapal Phinisi, mengunjungi Pulau Padar & Pink Beach.</p>
+                    </div>
+                    <div>
+                        <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai dari</span>
+                                <span class="text-lg font-bold text-brand-orange">Rp 4.750.000</span>
+                            </div>
+                            <button onclick="openModal('Sailing Labuan Bajo', 'Rp 4.750.000', '3 Hari 2 Malam')" class="bg-teal-50 hover:bg-brand-teal hover:text-white text-brand-teal px-4 py-2 rounded-xl font-semibold text-sm transition-colors">
+                                Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Bromo -->
+            <div class="tour-card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg card-hover flex flex-col" data-category="bromo">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=800&q=80" alt="Pesona Bromo Sunrise" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-brand-darkTeal font-bold px-3 py-1 rounded-full text-xs shadow-sm">
+                        <i class="fa-solid fa-clock text-brand-orange mr-1"></i> 2 Hari 1 Malam
+                    </span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-brand-teal uppercase tracking-wider">Adventure & Mountain</span>
+                            <div class="flex items-center text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="text-slate-700 font-bold ml-1 text-xs">4.9 (185)</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Pesona Bromo Sunrise</h3>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Petualangan Jeep 4x4 berburu golden sunrise, Kawah Bromo, dan Pasir Berbisik.</p>
+                    </div>
+                    <div>
+                        <div class="border-t border-slate-100 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Mulai dari</span>
+                                <span class="text-lg font-bold text-brand-orange">Rp 1.850.000</span>
+                            </div>
+                            <button onclick="openModal('Pesona Bromo Sunrise', 'Rp 1.850.000', '2 Hari 1 Malam')" class="bg-teal-50 hover:bg-brand-teal hover:text-white text-brand-teal px-4 py-2 rounded-xl font-semibold text-sm transition-colors">
+                                Detail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keunggulan" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-teal mb-2">Keunggulan Kami</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Mengapa Memilih Nusantara Tour?</p>
+                <p class="mt-4 text-slate-600">Komitmen kami adalah memberikan kenyamanan, keamanan, dan kenangan liburan terbaik untuk Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Advantage 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-teal-50 text-brand-teal rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Harga Terbaik</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Jaminan harga jujur tanpa biaya tersembunyi dengan fasilitas serta layanan premium terjangkau.</p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                        <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pemandu Profesional</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Didampingi tour guide lokal bersertifikat yang ramah, berpengalaman, dan berpengetahuan luas.</p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-teal-50 text-brand-teal rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pelayanan 24/7</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Tim customer care siap membantu dan merespon segala kebutuhan perjalanan Anda kapan saja.</p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Keselamatan Terjamin</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Semua tur dilengkapi dengan proteksi asuransi perjalanan & protokol keselamatan standar tinggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-teal mb-2">Ulasan Wisatawan</h2>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kisah Pengalaman Mereka</p>
+            <p class="mt-4 text-slate-600">Dengarkan apa kata mereka yang telah menjelajahi keindahan Indonesia bersama Nusantara Tour.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-md flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic leading-relaxed">"Liburan keluarga ke Labuan Bajo sangat luar biasa! Pelayanan kapalnya memuaskan, makanan enak, dan pemandunya sangat sabar membantu foto-foto."</p>
+                </div>
+                <div class="flex items-center gap-4 pt-6 mt-6 border-t border-slate-100">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Anisa Rahma" class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Anisa Rahmawati</p>
+                        <p class="text-xs text-slate-400">Jakarta • Trip Labuan Bajo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-md flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic leading-relaxed">"Raja Ampat adalah impian saya sejak lama. Terima kasih Nusantara Tour telah mewujudkannya dengan harga terjangkau dan itinerary yang teratur rapi!"</p>
+                </div>
+                <div class="flex items-center gap-4 pt-6 mt-6 border-t border-slate-100">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Budi Santoso" class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Budi Santoso</p>
+                        <p class="text-xs text-slate-400">Surabaya • Trip Raja Ampat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-md flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm italic leading-relaxed">"Trip singkat ke Bromo sangat memuaskan! Driver jeep sangat ahli dan penjemputan tepat waktu. Recommended banget untuk travel agent ini."</p>
+                </div>
+                <div class="flex items-center gap-4 pt-6 mt-6 border-t border-slate-100">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Citra Dewi" class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Citra Dewi</p>
+                        <p class="text-xs text-slate-400">Bandung • Trip Bromo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak" class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-orange flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight text-white">Nusantara<span class="text-brand-orange">Tour</span></span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Agen perjalanan wisata terpercaya di Indonesia. Kami siap mengantarkan Anda menjelajahi keajaiban dan pesona alam Nusantara.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-teal text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-teal text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-teal text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-brand-teal text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h3 class="text-white font-bold text-base mb-4">Navigasi Cepat</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#beranda" class="hover:text-brand-orange transition-colors">Beranda</a></li>
+                        <li><a href="#paket" class="hover:text-brand-orange transition-colors">Paket Wisata Populer</a></li>
+                        <li><a href="#keunggulan" class="hover:text-brand-orange transition-colors">Keunggulan Kami</a></li>
+                        <li><a href="#testimoni" class="hover:text-brand-orange transition-colors">Testimoni Wisatawan</a></li>
+                        <li><a href="#kontak" class="hover:text-brand-orange transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Destinasi Favorit -->
+                <div>
+                    <h3 class="text-white font-bold text-base mb-4">Destinasi Populer</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#paket" class="hover:text-brand-teal transition-colors">Wisata Bali & Nusa Penida</a></li>
+                        <li><a href="#paket" class="hover:text-brand-teal transition-colors">Taman Nasional Komodo</a></li>
+                        <li><a href="#paket" class="hover:text-brand-teal transition-colors">Kepulauan Raja Ampat</a></li>
+                        <li><a href="#paket" class="hover:text-brand-teal transition-colors">Gunung Bromo & Ijen</a></li>
+                        <li><a href="#paket" class="hover:text-brand-teal transition-colors">Candi Borobudur & Jogja</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div>
+                    <h3 class="text-white font-bold text-base mb-4">Informasi Kontak</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-orange mt-1"></i>
+                            <span>Jl. MH Thamrin No. 12, Jakarta Pusat, Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-orange"></i>
+                            <span>+62 812 3456 7890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-orange"></i>
+                            <span>info@nusantaratour.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Footer Bar -->
+            <div class="border-t border-slate-800 pt-8 text-center sm:flex sm:justify-between sm:text-left text-xs text-slate-500">
+                <p>&copy; 2026 Nusantara Tour & Travel. Hak Cipta Dilindungi.</p>
+                <div class="mt-4 sm:mt-0 flex justify-center gap-6">
+                    <a href="#" class="hover:text-slate-400">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-slate-400">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative transform transition-all">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 id="modal-title" class="text-xl font-bold text-slate-900 mb-1">Pesan Paket Wisata</h3>
+            <p id="modal-subtitle" class="text-sm text-slate-500 mb-6"></p>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Lengkap</label>
+                    <input type="text" required placeholder="Masukkan nama Anda" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nomor WhatsApp</label>
+                    <input type="tel" required placeholder="08123456789" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Rencana Tanggal</label>
+                    <input type="date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Catatan Tambahan</label>
+                    <textarea rows="2" placeholder="Permintaan khusus/jumlah peserta" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-orange hover:bg-brand-hoverOrange text-white font-bold py-3 rounded-xl shadow-lg transition-colors text-sm mt-2">
+                    Konfirmasi Pemesanan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Pesan berhasil dikirim!</span>
+    </div>
+
+    <script>
+        // Navbar Scroll Effect & Mobile Menu Logic
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md', 'py-1');
+                navbar.classList.remove('bg-transparent', 'py-0');
+                logoText.classList.add('text-slate-900');
+                logoText.classList.remove('text-white');
+                menuBtn.classList.add('text-slate-900');
+                menuBtn.classList.remove('text-white');
+                navLinks.forEach(link => {
+                    link.classList.add('text-slate-700');
+                    link.classList.remove('text-white');
+                });
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'py-1');
+                navbar.classList.add('bg-transparent', 'py-0');
+                logoText.classList.remove('text-slate-900');
+                logoText.classList.add('text-white');
+                menuBtn.classList.remove('text-slate-900');
+                menuBtn.classList.add('text-white');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-slate-700');
+                    link.classList.add('text-white');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            }
+        });
+
+        // Close Mobile Menu on Click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // Destination Filter Logic
+        function handleSearch(event) {
+            event.preventDefault();
+            const selectedDest = document.getElementById('destination-select').value;
+            const cards = document.querySelectorAll('.tour-card');
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (selectedDest === 'all' || selectedDest === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Smooth scroll to tour packages
+            document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('booking-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+
+        function openModal(tourName, price, duration) {
+            modalTitle.innerText = tourName;
+            modalSubtitle.innerText = `${duration} • ${price}`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close modal when clicking background
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Handle Booking Form Submit
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            closeModal();
+            showToast('Permintaan booking berhasil terkirim! Tim kami akan menghubungi Anda via WhatsApp.');
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
